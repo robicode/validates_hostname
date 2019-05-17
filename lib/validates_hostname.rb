@@ -198,7 +198,7 @@ module PAK
             #          a-z, 0-9, hyphen, optional underscore, optional asterisk
             valid_chars = 'a-z0-9\-'
             valid_chars << '_' if options[:allow_underscore] == true
-            add_error(record, attribute, :label_contains_invalid_characters, :valid_chars => valid_chars) unless label =~ /^[#{valid_chars}]+$/i
+            add_error(record, attribute, :label_contains_invalid_characters, :valid_chars => valid_chars) unless label =~ /\A[#{valid_chars}]+\z/i
           end
 
           # CHECK 4: the unqualified hostname portion cannot consist of
